@@ -1,3 +1,15 @@
 theme: jekyll-theme-minimal
-title: Haziq Zamri's portfolio
-description: Welcome to my portfolio!
+title: IHZAQ | Engineering & Code
+description: Electrical Engineering student and hobbyist programmer based in Malaysia. Showcasing projects, hardware experiments, and software development.
+
+# Personal Identity
+author: Haziq Zamri
+github_username: ihzaq  # Replace with your actual GitHub username
+
+# Settings
+show_downloads: true
+google_analytics: null # Add your UA-ID here if you want to track visitors
+
+# Essential Plugins (Makes it look professional)
+plugins:
+  - jekyll-seo-tag
