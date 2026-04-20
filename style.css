@@ -1,64 +1,28 @@
-:root {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --accent-color: #4a9eff;
-    --card-bg: #1e1e1e;
-}
+:root { --bg-color: #121212; --text-color: #e0e0e0; --accent-color: #4a9eff; --card-bg: #1e1e1e; }
+body.light-mode { --bg-color: #ffffff; --text-color: #333333; --card-bg: #f4f4f4; }
 
-body.light-mode {
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    --card-bg: #f4f4f4;
-}
+body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Segoe UI', sans-serif; transition: 0.3s; margin: 0; padding: 20px; }
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.container { max-width: 800px; margin: 40px auto; padding: 20px; }
-
+/* Circular Top-Right Toggle */
 #theme-toggle {
-    position: fixed; bottom: 20px; right: 20px;
-    background: var(--accent-color);
-    border: none; width: 50px; height: 50px;
-    border-radius: 50%; color: white;
-    cursor: pointer; font-size: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    z-index: 1000;
+    position: fixed; top: 20px; right: 20px;
+    background: var(--accent-color); border: none;
+    width: 45px; height: 45px; border-radius: 50%;
+    color: white; cursor: pointer; z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.card { background: var(--card-bg); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+.container { max-width: 800px; margin: 0 auto; }
 
-/* Clean Link Grid */
-.link-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
-    gap: 15px; 
-}
+.card { background: var(--card-bg); padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #333; }
+
+/* Wide Gap for Links */
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 25px; margin-top: 20px; }
 
 .link-grid a { 
-    background: var(--card-bg); 
-    padding: 15px; 
-    border-radius: 8px; 
-    text-align: center;
-    color: var(--text-color);
-    transition: transform 0.2s, background 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+    background: var(--card-bg); padding: 15px; border-radius: 10px; 
+    text-align: center; color: var(--text-color); transition: 0.2s;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
 }
 
-.link-grid a:hover { 
-    transform: translateY(-5px); 
-    background: #2a2a2a;
-    color: var(--accent-color);
-}
-
-a { text-decoration: none; }
+.link-grid a:hover { background: #2a2a2a; transform: translateY(-3px); color: var(--accent-color); }
