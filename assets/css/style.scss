@@ -2,13 +2,23 @@
 ---
 @import "{{ site.theme }}";
 
+/* Set global dark background */
 body {
     background-color: #1a1a1a;
     color: #e0e0e0;
 }
 
+/* Force the main content area to follow our color scheme */
+.main-content {
+    color: #e0e0e0;
+}
+
 h1, h2, h3, h4, h5, h6 {
-    color: #ffffff;
+    color: #ffffff !important; /* Force override headers */
+}
+
+p, li, blockquote {
+    color: #e0e0e0 !important;
 }
 
 a {
@@ -19,6 +29,14 @@ a:hover {
     color: #85c1ff;
 }
 
+/* Fix for specific elements that might still look dark */
 hr {
-    border-top: 1px solid #333;
+    border-top: 1px solid #444;
+}
+
+code {
+    background-color: #333;
+    color: #ff9999;
+    padding: 2px 4px;
+    border-radius: 4px;
 }
