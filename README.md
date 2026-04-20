@@ -1,41 +1,37 @@
-# ihzaq.dev
+# Muhammad Haziq Bin Ahmad Zamri
 
-## > Hello, I am IHZAQ.
-* **Role:** Electrical Engineering Student & Software Developer.
-* **Mission:** Building solutions, solving logic, and creating cool digital experiences.
+**Electrical & Electronics Engineering Student @ UTP** *PESP Scholar | Aspiring Professional Electrical Engineer*
 
 ---
 
-## > Projects
-* **Skin Stealer (Discord Bot)**
-    * *Tech:* Node.js, MongoDB.
-    * *Features:* Real-time stats, interactive games, automated privacy management.
-* **3x3 LED Grid (Hardware)**
-    * *Tech:* Arduino Nano, Analog Circuits.
-    * *Highlight:* Custom animation displaying "HAZIQ" in a 3x3 array.
-* **Logic Gate Simulator**
-    * *Tech:* JavaScript, HTML5 Canvas.
-    * *Purpose:* A visual tool to understand analog circuit logic flow.
+## About
+Currently pursuing a Foundation in Engineering at Universiti Teknologi PETRONAS (UTP) under the Petronas Education Sponsorship Programme (PESP). I am passionate about the intersection of electrical systems and automation. I leverage programming to build efficient tools and solve complex engineering problems.
 
 ---
 
-## > Interactive Lab
-* **LED Grid Simulator:** A browser-based preview of my LED project.
-    * *Goal:* Click the grid nodes to toggle lights and preview animations before flashing the Arduino.
+## Projects
+### Skin Stealer (Discord Bot)
+[View on GitHub](https://github.com/IHZAQ/SkinStealerDiscordBot33)
+A utility tool for Discord server management. This project demonstrates my proficiency in Node.js, data flow automation, and maintaining robust backend services.
 
 ---
 
-## > Dev Log
-* *Entry 01:* Tackling asynchronous functions in the Skin Stealer bot.
-* *Entry 02:* Optimizing circuit layouts for the Logic Gate simulator.
-* *Entry 03:* Lessons learned from Node.js Canvas manipulation.
+## Achievements & Leadership
+* **Academic Excellence:** Peer Tutor for Mathematics, Additional Mathematics, Physics, and Chemistry.
+* **Duta Sahsiah:** Recognized in 2023 & 2024 for exemplary conduct.
+* **Tokoh Personaliti Unggul:** Pembimbing Rakan Sebaya (PRS).
+* **Leadership Recognition:** Platinum Award (Student Affairs Unit).
 
 ---
 
-## > Contact
-* **GitHub:** [github.com/ihzaq](https://github.com/ihzaq)
-* **Email:** [contact@ihzaq.dev](mailto:contact@ihzaq.dev)
+## Involvement
+* **Persatuan Seni Silat Cekak Ustaz Hanafi Malaysia**
+* **UTPeers**
+
+---
+
+## Contact
+* **GitHub:** [github.com/IHZAQ](https://github.com/IHZAQ)
 * **Location:** Alor Setar, Kedah
 
----
-*Built with passion and coffee.*
+*Last updated: April 2026*

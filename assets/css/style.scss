@@ -1,0 +1,24 @@
+---
+---
+@import "{{ site.theme }}";
+
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+}
+
+a {
+    color: #4a9eff;
+}
+
+a:hover {
+    color: #85c1ff;
+}
+
+hr {
+    border-top: 1px solid #333;
+}
