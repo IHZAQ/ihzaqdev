@@ -1,15 +1,13 @@
-theme: jekyll-theme-minimal
-title: IHZAQ | Engineering & Code
-description: Electrical Engineering student and hobbyist programmer based in Malaysia. Showcasing projects, hardware experiments, and software development.
+# Use the Minimal Mistakes theme
+remote_theme: "mmistakes/minimal-mistakes"
 
-# Personal Identity
-author: Haziq Zamri
-github_username: ihzaq  # Replace with your actual GitHub username
+# Site configuration
+title: "IHZAQ | Engineering & Code"
+author: "Haziq Zamri"
+description: "Electrical & Electronics Engineering Student @ UTP"
 
-# Settings
-show_downloads: true
-google_analytics: null # Add your UA-ID here if you want to track visitors
+# Enable Dark Mode (Minimal Mistakes has this natively!)
+minimal_mistakes_skin: "dark" 
 
-# Essential Plugins (Makes it look professional)
-plugins:
-  - jekyll-seo-tag
+# Other settings
+show_downloads: false
