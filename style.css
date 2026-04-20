@@ -9,12 +9,33 @@ body.light-mode { --bg-color: #ffffff; --text-color: #333333; --card-bg: #f4f4f4
 body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Segoe UI', sans-serif; transition: 0.3s; margin: 0; padding: 20px; }
 
 /* Circular Top-Right Toggle */
+/* Circular Top-Right Toggle */
 #theme-toggle {
-    position: fixed; top: 20px; right: 20px;
-    background: var(--accent-color); border: none;
-    width: 45px; height: 45px; border-radius: 50%;
-    color: #000; cursor: pointer; z-index: 1000;
+    position: fixed; 
+    top: 20px; 
+    right: 20px;
+    background: var(--accent-color); 
+    border: none;
+    width: 45px; 
+    height: 45px; 
+    border-radius: 50%;
+    color: #000; 
+    cursor: pointer; 
+    z-index: 1000;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.1s, background 0.1s; /* Smooth transition */
+}
+
+/* 1. Remove the blue focus box */
+#theme-toggle:focus {
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* 2. The "darker click" effect */
+#theme-toggle:active {
+    transform: scale(0.90); /* Makes it shrink slightly when clicked */
+    background-color: #b89c00; /* A darker version of your gold */
 }
 
 .container { max-width: 800px; margin: 0 auto; }
