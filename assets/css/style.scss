@@ -2,41 +2,44 @@
 ---
 @import "{{ site.theme }}";
 
-/* Set global dark background */
-body {
-    background-color: #1a1a1a;
-    color: #e0e0e0;
+/* Force Dark Background and Text Everywhere */
+body, .wrapper, section, header, footer {
+    background-color: #1a1a1a !important;
+    color: #e0e0e0 !important;
 }
 
-/* Force the main content area to follow our color scheme */
-.main-content {
-    color: #e0e0e0;
-}
-
+/* Force Headers */
 h1, h2, h3, h4, h5, h6 {
-    color: #ffffff !important; /* Force override headers */
+    color: #ffffff !important;
 }
 
+/* Force Links */
+a {
+    color: #4a9eff !important;
+}
+
+a:hover {
+    color: #85c1ff !important;
+}
+
+/* Force Table Styling */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    color: #e0e0e0 !important;
+    border: 1px solid #444;
+    padding: 8px;
+}
+
+/* Force specific elements like lists and paragraphs */
 p, li, blockquote {
     color: #e0e0e0 !important;
 }
 
-a {
-    color: #4a9eff;
-}
-
-a:hover {
-    color: #85c1ff;
-}
-
-/* Fix for specific elements that might still look dark */
+/* Fix separators */
 hr {
-    border-top: 1px solid #444;
-}
-
-code {
-    background-color: #333;
-    color: #ff9999;
-    padding: 2px 4px;
-    border-radius: 4px;
+    border-top: 1px solid #444 !important;
 }
