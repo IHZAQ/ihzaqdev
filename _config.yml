@@ -1,13 +1,11 @@
-# Use the Minimal Mistakes theme
-remote_theme: "mmistakes/minimal-mistakes"
+# Use a native, dark-themed, stable theme
+theme: jekyll-theme-slate
 
 # Site configuration
 title: "IHZAQ | Engineering & Code"
 author: "Haziq Zamri"
 description: "Electrical & Electronics Engineering Student @ UTP"
 
-# Enable Dark Mode (Minimal Mistakes has this natively!)
-minimal_mistakes_skin: "dark" 
-
-# Other settings
-show_downloads: false
+# Plugins (Keep it simple)
+plugins:
+  - jekyll-seo-tag
