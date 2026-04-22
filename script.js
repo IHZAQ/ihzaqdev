@@ -1,3 +1,4 @@
+// 1. Theme Logic (Keep this from before)
 const toggleBtn = document.getElementById('theme-toggle');
 
 toggleBtn.addEventListener('click', () => {
@@ -5,14 +6,42 @@ toggleBtn.addEventListener('click', () => {
     toggleBtn.innerText = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
 });
 
-fetch('https://api.github.com/users/IHZAQ/repos?sort=updated&per_page=1')
+// 2. Dynamic GitHub Portfolio Fetcher
+const username = 'IHZAQ';
+fetch(`https://api.github.com/users/${username}/starred`)
     .then(response => response.json())
     .then(data => {
-        if(data.length > 0) {
-            const latest = data[0];
-            document.getElementById('github-status').innerHTML = `
-                <p><strong>Latest Engineering Update:</strong><br> 
-                <a href="${latest.html_url}" target="_blank">${latest.name}</a> - ${latest.description || 'No description available'}</p>
+        // Filter: Only keep repos that you actually own
+        const myStarredRepos = data.filter(repo => repo.owner.login === username);
+        const repoContainer = document.getElementById('repo-list');
+        
+        if (myStarredRepos.length > 0) {
+            repoContainer.innerHTML = ''; // Clear the "Fetching..." text
+            
+            // Loop through each repo and build a card
+            myStarredRepos.forEach(repo => {
+                repoContainer.innerHTML += `
+                    <div class="card">
+                        <h3>${repo.name}</h3>
+                        <p>${repo.description || 'No description provided.'}</p>
+                        <a href="${repo.html_url}" target="_blank" class="link-btn">
+                            <i class="fa-brands fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                `;
+            });
+        } else {
+            repoContainer.innerHTML = `
+                <div class="card">
+                    <p>No featured projects found right now. Check back later!</p>
+                </div>
             `;
         }
+    })
+    .catch(error => {
+        document.getElementById('repo-list').innerHTML = `
+            <div class="card">
+                <p>Failed to load repositories from GitHub.</p>
+            </div>
+        `;
     });
