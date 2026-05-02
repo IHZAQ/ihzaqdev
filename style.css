@@ -54,3 +54,41 @@ a { text-decoration: none; color: var(--accent-color); }
 }
 
 .link-grid a:hover { background: #2a2a2a; border-color: var(--accent-color); }
+
+/* --- Discord Status Bar --- */
+#discord-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.light-mode #discord-status {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #747f8d; /* Default Offline */
+    transition: background-color 0.3s ease;
+}
+
+/* Discord Presence Colors */
+.status-dot.online { background-color: #3ba55c; }
+.status-dot.idle { background-color: #faa61a; }
+.status-dot.dnd { background-color: #ed4245; }
+.status-dot.offline { background-color: #747f8d; }
+
+#discord-status-text {
+    font-weight: 500;
+}

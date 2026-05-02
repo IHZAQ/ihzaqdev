@@ -1,4 +1,4 @@
-// 1. Theme Logic (Keep this from before)
+// 1. Theme Logic
 const toggleBtn = document.getElementById('theme-toggle');
 
 toggleBtn.addEventListener('click', () => {
@@ -6,22 +6,20 @@ toggleBtn.addEventListener('click', () => {
     toggleBtn.innerText = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
 });
 
-// 2. Dynamic GitHub Portfolio Fetcher
+// 2. Dynamic GitHub Portfolio Fetcher & Tilt Initialization
 const username = 'IHZAQ';
 fetch(`https://api.github.com/users/${username}/starred`)
     .then(response => response.json())
     .then(data => {
-        // Filter: Only keep repos that you actually own
         const myStarredRepos = data.filter(repo => repo.owner.login === username);
         const repoContainer = document.getElementById('repo-list');
         
         if (myStarredRepos.length > 0) {
-            repoContainer.innerHTML = ''; // Clear the "Fetching..." text
+            repoContainer.innerHTML = ''; 
             
-            // Loop through each repo and build a card
             myStarredRepos.forEach(repo => {
                 repoContainer.innerHTML += `
-                    <div class="card">
+                    <div class="card github-card" data-tilt data-tilt-max="10" data-tilt-glare data-tilt-max-glare="0.1">
                         <h3>${repo.name}</h3>
                         <p>${repo.description || 'No description provided.'}</p>
                         <a href="${repo.html_url}" target="_blank" class="link-btn">
@@ -30,6 +28,9 @@ fetch(`https://api.github.com/users/${username}/starred`)
                     </div>
                 `;
             });
+
+            // Initialize VanillaTilt for the newly created GitHub cards
+            VanillaTilt.init(document.querySelectorAll(".github-card"));
         } else {
             repoContainer.innerHTML = `
                 <div class="card">
@@ -45,3 +46,55 @@ fetch(`https://api.github.com/users/${username}/starred`)
             </div>
         `;
     });
+
+// 3. Discord Live Status (Lanyard API)
+const discordId = '657951960397381684';
+const statusDot = document.querySelector('.status-dot');
+const statusText = document.getElementById('discord-status-text');
+
+function updateDiscordStatus() {
+    fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const presence = data.data;
+                
+                // Set the correct color class
+                statusDot.className = `status-dot ${presence.discord_status}`;
+                
+                // Determine what text to show based on priority
+                let activityString = "Online";
+                
+                if (presence.discord_status === "offline") {
+                    activityString = "Offline";
+                } else if (presence.activities.length > 0) {
+                    // Check for specific activities
+                    const playingGame = presence.activities.find(a => a.type === 0);
+                    const customStatus = presence.activities.find(a => a.type === 4);
+                    
+                    if (playingGame) {
+                        activityString = `Playing ${playingGame.name}`;
+                    } else if (customStatus && customStatus.state) {
+                        activityString = customStatus.state;
+                    } else if (presence.discord_status === "dnd") {
+                        activityString = "Do Not Disturb";
+                    } else if (presence.discord_status === "idle") {
+                        activityString = "Idle";
+                    }
+                } else {
+                    if (presence.discord_status === "dnd") activityString = "Do Not Disturb";
+                    if (presence.discord_status === "idle") activityString = "Idle";
+                }
+                
+                statusText.innerText = activityString;
+            }
+        })
+        .catch(error => {
+            statusText.innerText = "Status unavailable";
+            statusDot.className = "status-dot offline";
+        });
+}
+
+// Fetch status immediately, then refresh every 15 seconds
+updateDiscordStatus();
+setInterval(updateDiscordStatus, 15000);
