@@ -92,3 +92,71 @@ a { text-decoration: none; color: var(--accent-color); }
 #discord-status-text {
     font-weight: 500;
 }
+
+/* --- Profiles Section --- */
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.profile-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid transparent; 
+}
+
+/* Discord Status Borders */
+.online-border { border-color: #3ba55c; }
+.idle-border { border-color: #faa61a; }
+.dnd-border { border-color: #ed4245; }
+.offline-border { border-color: #747f8d; }
+
+.profile-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+}
+
+.profile-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.light-mode .profile-info p {
+    color: #555;
+}
+
+.github-stats {
+    display: flex;
+    gap: 15px;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #FFD700;
+}
+
+.light-mode .github-stats {
+    color: #b8860b; 
+}
+
+.profile-btn {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}

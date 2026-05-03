@@ -6,12 +6,28 @@ toggleBtn.addEventListener('click', () => {
     toggleBtn.innerText = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
 });
 
-// 2. Dynamic GitHub Portfolio Fetcher & Tilt Initialization
-const username = 'IHZAQ';
-fetch(`https://api.github.com/users/${username}/starred`)
+const githubUsername = 'IHZAQ';
+const discordId = '657951960397381684';
+
+// 2. Fetch GitHub Profile
+fetch(`https://api.github.com/users/${githubUsername}`)
     .then(response => response.json())
     .then(data => {
-        const myStarredRepos = data.filter(repo => repo.owner.login === username);
+        document.getElementById('github-avatar').src = data.avatar_url;
+        document.getElementById('github-username').innerText = data.name || data.login;
+        document.getElementById('github-bio').innerText = data.bio || 'No bio available.';
+        document.getElementById('github-followers').innerHTML = `<i class="fa-solid fa-users"></i> ${data.followers} Followers`;
+        document.getElementById('github-repos').innerHTML = `<i class="fa-solid fa-book-bookmark"></i> ${data.public_repos} Repos`;
+    })
+    .catch(error => {
+        document.getElementById('github-username').innerText = 'GitHub unavailable';
+    });
+
+// 3. Fetch GitHub Starred Projects & Initialize Tilt
+fetch(`https://api.github.com/users/${githubUsername}/starred`)
+    .then(response => response.json())
+    .then(data => {
+        const myStarredRepos = data.filter(repo => repo.owner.login === githubUsername);
         const repoContainer = document.getElementById('repo-list');
         
         if (myStarredRepos.length > 0) {
@@ -47,28 +63,29 @@ fetch(`https://api.github.com/users/${username}/starred`)
         `;
     });
 
-// 3. Discord Live Status (Lanyard API)
-const discordId = '657951960397381684';
-const statusDot = document.querySelector('.status-dot');
-const statusText = document.getElementById('discord-status-text');
-
+// 4. Fetch Discord Profile (Lanyard API)
 function updateDiscordStatus() {
     fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 const presence = data.data;
+                const discordUser = presence.discord_user;
                 
-                // Set the correct color class
-                statusDot.className = `status-dot ${presence.discord_status}`;
+                // Set Avatar
+                document.getElementById('discord-avatar').src = `https://cdn.discordapp.com/avatars/${discordUser.id}/${discordUser.avatar}.png`;
+                document.getElementById('discord-username').innerText = discordUser.global_name || discordUser.username;
                 
-                // Determine what text to show based on priority
+                // Set Border Color
+                const avatarImg = document.getElementById('discord-avatar');
+                avatarImg.className = `profile-avatar ${presence.discord_status}-border`;
+                
+                // Set Activity Text
                 let activityString = "Online";
                 
                 if (presence.discord_status === "offline") {
                     activityString = "Offline";
                 } else if (presence.activities.length > 0) {
-                    // Check for specific activities
                     const playingGame = presence.activities.find(a => a.type === 0);
                     const customStatus = presence.activities.find(a => a.type === 4);
                     
@@ -86,15 +103,15 @@ function updateDiscordStatus() {
                     if (presence.discord_status === "idle") activityString = "Idle";
                 }
                 
-                statusText.innerText = activityString;
+                document.getElementById('discord-status-text').innerText = activityString;
             }
         })
         .catch(error => {
-            statusText.innerText = "Status unavailable";
-            statusDot.className = "status-dot offline";
+            document.getElementById('discord-status-text').innerText = "Status unavailable";
+            document.getElementById('discord-avatar').className = "profile-avatar offline-border";
         });
 }
 
-// Fetch status immediately, then refresh every 15 seconds
+// Fetch Discord status immediately, then refresh every 15 seconds
 updateDiscordStatus();
 setInterval(updateDiscordStatus, 15000);
